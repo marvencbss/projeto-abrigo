@@ -1,4 +1,5 @@
 let menu
+let codigo = 0
 let abrigos = []
 
 while (menu !== 4) {
@@ -32,22 +33,24 @@ switch (menu) {
 }
 
 function cadastrarAbrigo() {
-    const id = 000
-    const nome = prompt("Digite o nome do abrigo");
-    const endereco = (prompt("Digite o endereço do abrigo"));
-    const telefone = Number(prompt("Digite o telefone do abrigo"));
-    const capLotAbrigo = Number(prompt("Digite a capacidade do abrigo")
-    )
+  codigo +=1
+  const nome = prompt("Digite o nome do abrigo");
+  const endereco = (prompt("Digite o endereço do abrigo"));
+  const telefone = Number(prompt("Digite o telefone do abrigo"));
+  const capLotAbrigo = Number(prompt("Digite a capacidade do abrigo"));
+  const cidade = prompt("Digite sua cidade");
+    
   
     const abrigo = {
-id: id++,
+codigo,
 nome,
 endereco,
 telefone,
 capLotAbrigo,
+cidade,
 }
 
-abrigos.push(cadastrarAbrigo)
+abrigos.push(abrigo)
 alert("Abrigo cadastrado com sucesso")
 }
 
@@ -55,14 +58,14 @@ function listar() {
     if (abrigos.length === 0) {
       alert("Não existem abrigos cadastrados");
     } else {
-      let mensagem = `--------------------
+      let mensagem = `
       LISTAGEM DE ABRIGOS:
       --------------------
-      CÓDIGO |        NOME        |              ENDEREÇO              |   TELEFONE   |  CAPACIDADE | CIDADE
+      CÓDIGO | NOME | ENDEREÇO | TELEFONE | CAPACIDADE | CIDADE
       `;
   
       for (let abrigo of abrigos) {
-        mensagem += `\n         ${abrigo.id} ||     ${abrigo.nome} ||      ${abrigo.endereco} ||    ${abrigo.telefone} ||        ${abrigo.capLotAbrigo}      `;
+        mensagem += `\n           ${abrigo.codigo} | ${abrigo.nome} | ${abrigo.endereco} | ${abrigo.telefone} | ${abrigo.capLotAbrigo} | ${abrigo.cidade}`;
       }
       alert(mensagem);
     }
@@ -79,16 +82,15 @@ function listar() {
   
       let mensagem = `LISTAGEM DE ABRIGOS:
       --------------------
-      CÓDIGO |         NOME         |              ENDEREÇO              |   TELEFONE   |  CAPACIDADE | CIDADE
+      CÓDIGO | NOME | ENDEREÇO | TELEFONE | CAPACIDADE | CIDADE
       ---------------------------------------------------------------------------------------------------------`;
   
       for (let abrigo of abrigos) {
         if (abrigo.cidade.includes(buscaCidade)) {
-          mensagem += `\n         ${id} |         ${nome}         |              ${endereco}              |   ${endereco}   |  ${capLotAbrigo} |   ${cidade}`;
+          mensagem += `\n           ${abrigo.codigo} | ${abrigo.nome} | ${abrigo.endereco} | ${abrigo.telefone} | ${abrigo.capLotAbrigo} | ${abrigo.cidade}`;
         }
       }
   
       alert(mensagem);
     }
   }
-
